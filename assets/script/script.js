@@ -1,9 +1,11 @@
 var buisnessHours = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 var currentHour = moment().hour();
 
+
  function displayCurrentDate() {
   var currentDay = moment().format("dddd, MMMM Do YYYY");
-  currentDay.innerhtml = "currentDay";
+  $("#currentDay").append(currentDay)
+  
 } 
 
 function displayDayPlanner() {
