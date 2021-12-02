@@ -1,5 +1,10 @@
 var buisnessHours = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-// var currentHour = moment().hour();
+var currentHour = moment().hour();
+
+ function displayCurrentDate() {
+  var currentDay = moment().format("dddd, MMMM Do YYYY");
+  currentDay.innerhtml = "currentDay";
+} 
 
 function displayDayPlanner() {
   for (let i = 0; i < buisnessHours.length; i++) {
@@ -13,15 +18,14 @@ function displayDayPlanner() {
         hours = buisnessHours[i] - 12 + "PM";
       }
     }
-    console.log(hours);
 
-    colHr.append(hours)
-
-
+    colHr.append(hours);
     row.append(colHr);
-    $('#dayPlanner').append(row);
+    $("#dayPlanner").append(row);
   }
 }
 
+// localStorage.setItem( 'hour-9', "hour 9 text value");
 displayDayPlanner();
-/* text area and append the text area with save button
+displayCurrentDate();
+/* text area and append the text area with save button */
