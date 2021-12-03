@@ -9,8 +9,7 @@ function displayCurrentDate() {
 function displayDayPlanner() {
   for (let i = 0; i < buisnessHours.length; i++) {
     let row = $("<div class='row'>");
-    let colHr = $("<div class='col-med-1'>");
-  
+    let colHr = $("<div class='col-med-1 hour'>");
 
     let hours = buisnessHours[i] + "AM"; // coverting array into hours
     if (buisnessHours[i] >= 12) {
@@ -18,15 +17,23 @@ function displayDayPlanner() {
       if (buisnessHours[i] >= 13) {
         hours = buisnessHours[i] - 12 + "PM";
       }
+      if (hours === currentHour) {
+        document.getElementByClass("row").style.display = "present";
+      }
+      if (hours >= currentHour) {
+        document.getElementsByClassName("row").style.display = "past";
+      }
+      if (hours <= currentHour) {
+        document.getElementsByClassName("row").style.display = "future";
+      }
     }
-    let saveBtn = $("<button class = 'btn saveBtn col-md-1'>");
-    let textArea= $("<textarea class='col-med-10'>")
-    colHr.append(hours);
-    row.append(colHr,saveBtn,textArea);
-    $(".container").append(row); // appending hours to html
-    // $(".row").append(saveBtn);
-    // $(".row").append(textArea)
     
+
+    let saveBtn = $("<button class = 'btn saveBtn col-md-1'>");
+    let textArea = $("<textarea class='col-med-10 description'>");
+    colHr.append(hours);
+    row.append(colHr, textArea, saveBtn);
+    $(".container").append(row); // appending hours to html
   }
 }
 
@@ -37,8 +44,6 @@ $(".container").on("click", "button", function saveDay(event) {
 displayDayPlanner();
 displayCurrentDate();
 
-/* text area and append the text area with save button 
-
-Local Storage:
+/* Local Storage:
 localStorage.setItem("hour-9", "hour 9 text value");
 var savedValueForHour = localStorage.getItem("hour-"+ i) */
