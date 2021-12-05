@@ -1,16 +1,23 @@
-var buisnessHours = [9, 10, 11, 12, 13, 14, 15, 16, 17]; // array for hours
+//  = [9, 10, 11, 12, 13, 14, 15, 16, 17]; // array for hours
 var currentHour = moment().hours(); // how to know what the current hour is
-
+var buisnessHours = document.getElementsByid("#container");
 // using moment to display the day of the week and date
 function displayCurrentDate() {
   var currentDay = moment().format("dddd, MMMM Do YYYY");
   $("#currentDay").append(currentDay);
 }
-
+// appending hours to html
 function displayDayPlanner() {
-  for (let i = 0; i < buisnessHours.length; i++) {
-    let row = $("<div class='row time-block'>");
-    let colHr = $("<div class='hour col-med-3'>");
+  var row = $("class='row time-block'>");
+  var colHr = $("class='hour col-med-3'>");
+  var textArea = $("class= 'description col-sm-10'>");
+  var saveBtn = $("class = 'btn saveBtn col-sm-1'>");
+  // colHr.append(buisnessHours);
+  row.append(colHr, textArea, saveBtn);
+  $(".container").append(row);
+
+  /*for (let i = 0; i < buisnessHours.length; i++) {
+  
     let hours = buisnessHours[i] + "AM"; // coverting array into hours
     if (buisnessHours[i] >= 12) {
       hours = buisnessHours[i] + "PM";
@@ -18,12 +25,7 @@ function displayDayPlanner() {
         hours = buisnessHours[i] - 12 + "PM";
       }
     }
-    var textArea = $("<textarea class= 'description col-sm-10'>");
-    var saveBtn = $("<button class = 'btn saveBtn col-sm-1'>");
-    colHr.append(hours);
-    row.append(colHr, textArea, saveBtn);
-    $(".container").append(row); // appending hours to html
-  }
+  } */
 }
 
 /*$(".container").on("click", "button", (event) => {
