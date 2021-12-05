@@ -1,5 +1,5 @@
 var buisnessHours = [9, 10, 11, 12, 13, 14, 15, 16, 17]; // array for hours
-var currentHour = moment().hour(); // how to know what the current hour is
+var currentHour = moment().hours(); // how to know what the current hour is
 
 // using moment to display the day of the week and date
 function displayCurrentDate() {
@@ -10,7 +10,7 @@ function displayCurrentDate() {
 function displayDayPlanner() {
   for (let i = 0; i < buisnessHours.length; i++) {
     let row = $("<div class='row time-block'>");
-    let colHr = $("<div class='col-med-2 hour'>");
+    let colHr = $("<div class='hour col-med-3'>");
     let hours = buisnessHours[i] + "AM"; // coverting array into hours
     if (buisnessHours[i] >= 12) {
       hours = buisnessHours[i] + "PM";
@@ -18,38 +18,32 @@ function displayDayPlanner() {
         hours = buisnessHours[i] - 12 + "PM";
       }
     }
-    var textArea = $("<textarea class='col-med-10 description'>");
-    var saveBtn = $("<button class = 'btn saveBtn col-md-1'>");
+    var textArea = $("<textarea class= 'description col-sm-10'>");
+    var saveBtn = $("<button class = 'btn saveBtn col-sm-1'>");
     colHr.append(hours);
     row.append(colHr, textArea, saveBtn);
     $(".container").append(row); // appending hours to html
   }
+}
 
-  $(".container").on("click", "button", function saveDay(event) {
-    var time = $(this).parent().attr("id");
-    var text = $(this).siblings(".description").val();
-    event.target.localStorage.setItem(time, text);
+/*$(".container").on("click", "button", (event) => {
+    event.target.localStorage.setItem("#hour-9", ".description");
+    console.log(localStorage);
   });
-  }
+} */
 
-  function displayColor(){
+function displayColor() {
   $(".time-block").each(function () {
-    var timeBlock = 0;
-    if (timeBlock < currentHour) {
-      $(this).removeClass("future");
-      $(this).removeClass("present");
+    if (buisnessHours < currentHour) {
       $(this).addClass("past");
-    } else if (timeBlock === currentHour) {
-      $(this).removeClass("past");
-      $(this).removeClass("future");
+    } else if (buisnessHours === currentHour) {
       $(this).addClass("present");
     } else {
-      $(this).removeClass("present");
-      $(this).removeClass("past");
-      $(this).addClass("future")
+      $(this).addClass("future");
     }
-  }); console.log(currentHour)
-  }
+    console.log(currentHour);
+  });
+}
 
 $("#hour-9 .description").val(localStorage.getItem("hour-9"));
 $("#hour-10 .description").val(localStorage.getItem("hour-10"));
