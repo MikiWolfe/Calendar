@@ -8,7 +8,7 @@ $(document).ready(function () {
   // using the CSS provided so past is grey, present is red and future is green
 
   $(".time-block").each(function () {
-    var timeBlock = parseInt($(this).attr("id").split("hour")[1]);
+    var timeBlock = parseInt($(this).attr("id").split("-")[1]);
     if (timeBlock < currentHour) {
       $(this).addClass("past");
     } else if (timeBlock === currentHour) {
@@ -17,11 +17,11 @@ $(document).ready(function () {
     } else {
       $(this).removeClass("present");
       $(this).addClass("future");
-    }
+    } 
   });
 
   $(".saveBtn").on("click", function (event) {
-    // event.preventDefault();
+    event.preventDefault();
     var quest = $(this).siblings(".description").val();
     var hour = $(this).parent().attr("id");
     localStorage.setItem(hour, quest);
