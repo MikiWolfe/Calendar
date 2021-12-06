@@ -10,5 +10,7 @@ We have been tasked with making a day planner for to cover business hours for ou
     - jQuery is really interesting and I really liked using it for this project. 
 
 ## Screen shot: 
+![ScreenShot](image\ScreenShot.jpeg)"Day Planner"
 
 ## Link to deployed cite:
+https://mikiwolfe.github.io/Calendar/
