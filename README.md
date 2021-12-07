@@ -12,5 +12,5 @@ We have been tasked with making a day planner for to cover business hours for ou
 ## Screen shot: 
 ![ScreenShot](https://raw.githubusercontent.com/MikiWolfe/Calendar/main/image/ScreenShot.jpeg)"Day Planner"
 
-## Link to deployed cite:
+## Link to deployed site:
 https://mikiwolfe.github.io/Calendar/
